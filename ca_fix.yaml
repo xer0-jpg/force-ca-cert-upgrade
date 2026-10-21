@@ -1,0 +1,19 @@
+---
+- name: Force CA-Certificate Update
+  hosts: all
+  become: true
+  tasks:
+    - name: Upgrade ca-certificates
+      ansible.builtin.apt:
+        name: ca-certificates
+        state: latest
+        only_upgrade: true
+        update_cache: true
+      when: ansible_facts.os_family == "Debian"
+
+    - name: Verify compromised chain is rejected
+      ansible.builtin.command:
+        cmd: curl -sS -o /dev/null https://dv-g3b-emudhra.we-have-a-problem.com/
+      register: emudhra_check
+      changed_when: false
+      failed_when: emudhra_check.rc == 0
