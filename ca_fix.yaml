@@ -11,9 +11,12 @@
         update_cache: true
       when: ansible_facts.os_family == "Debian"
 
-    - name: Verify compromised chain is rejected
-      ansible.builtin.command:
-        cmd: curl -sS -o /dev/null https://dv-g3b-emudhra.we-have-a-problem.com/
+    - name: Verify compromised chains are rejected
+      ansible.builtin.uri:
+        url: "{{ item }}"
+        validate_certs: true
+      loop:
+        - https://dv-g3b-emudhra.we-have-a-problem.com/
+        - https://dv-g3b-aaa-emudhra.we-have-a-problem.com/
       register: emudhra_check
-      changed_when: false
-      failed_when: emudhra_check.rc == 0
+      failed_when: "'CERTIFICATE_VERIFY_FAILED' not in (emudhra_check.msg | default(''))"
