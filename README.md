@@ -11,6 +11,10 @@ Background: https://emudhra.we-have-a-problem.com/
 - Debian/Ubuntu (apt-based) hosts – other OS families are skipped
 - Outbound HTTPS from the targets for the verification step
 
+## Caveats
+
+To my knowledge RHEL has not released an updated package
+
 ## What it does
 
 1. Upgrades `ca-certificates` if already installed (`state: latest`, `only_upgrade: true`)
