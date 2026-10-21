@@ -18,5 +18,17 @@
       loop:
         - https://dv-g3b-emudhra.we-have-a-problem.com/
         - https://dv-g3b-aaa-emudhra.we-have-a-problem.com/
+        - https://dv-g3b-emudhra.we-have-a-problem.com/
+        - https://dv-g3c-emudhra.we-have-a-problem.com/
+        - https://ov-g3b-emudhra.we-have-a-problem.com/
+        - https://ov-g3c-emudhra.we-have-a-problem.com/
+        - https://ev-g3b-emudhra.we-have-a-problem.com/
+        - https://ev-g3c-emudhra.we-have-a-problem.com/
+        - https://dv-g3b-aaa-emudhra.we-have-a-problem.com/
+        - https://dv-g3c-aaa-emudhra.we-have-a-problem.com/
+        - https://ov-g3b-aaa-emudhra.we-have-a-problem.com/
+        - https://ov-g3c-aaa-emudhra.we-have-a-problem.com/
+        - https://ev-g3b-aaa-emudhra.we-have-a-problem.com/
+        - https://ev-g3c-aaa-emudhra.we-have-a-problem.com/
       register: emudhra_check
       failed_when: "'CERTIFICATE_VERIFY_FAILED' not in (emudhra_check.msg | default(''))"
